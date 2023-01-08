@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 
 ARG dbhost=localhost
 ARG dbport=3050
@@ -15,17 +15,18 @@ COPY radserver_docker.sh radserver_docker.sh
 #INSTALL APACHE AND OTHER LIBS
 
 RUN apt-get update
-RUN apt-get -yy --no-install-recommends install \
-        apache2 \
-        build-essential \
-        libcurl-openssl1.0-dev \
-        libcurl3 \
-        libgl1-mesa-dev \
-        libgtk-3-bin \
-        libosmesa-dev \
-        libpython3.6 \
-        unzip \
-        xorg
+RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC \
+        apt-get -yy --no-install-recommends install \
+                apache2 \
+                build-essential \
+                libcurl4-openssl-dev \
+                libcurl4 \
+                libgl1-mesa-dev \
+                libgtk-3-bin \
+                libosmesa-dev \
+                libpython3.8 \
+                unzip \
+                xorg
 RUN apt-get -y --no-install-recommends install 
 RUN apt-get -y autoremove && apt-get -y autoclean
 #====END OTHER LIBS
@@ -50,8 +51,8 @@ RUN sh ./radserver_install.sh -silent
 
 RUN mv PAServer-22.0/* .
 # Following might be helpful for versions of libpython different than 3.6
-# RUN mv lldb/lib/libpython3.so lldb/lib/libpython3.so_
-# RUN ln -s /lib/x86_64-linux-gnu/libpython3.8.so.1 lldb/lib/libpython3.so
+RUN mv lldb/lib/libpython3.so lldb/lib/libpython3.so_
+RUN ln -s /lib/x86_64-linux-gnu/libpython3.8.so.1 lldb/lib/libpython3.so
 
 #populate emsserver.ini with interbase connection data
 RUN cp /etc/ems/objrepos/emsserver.ini /etc/ems/emsserver.ini
