@@ -43,6 +43,9 @@ RUN tar xvzf paserver.tar.gz
 RUN sed -i "s/uname -a | grep/awk -F= '\/^NAME\/\{print \$2\}' \/etc\/os-release | grep/" radserver_install.sh
 
 RUN touch radserverlicense.slip
+#Comment out the previous line and un-comment the next two to use a slip file
+#COPY radserverlicense.slip ./radserverlicense.slip
+#RUN chmod 644 ./radserverlicense.slip
 
 RUN sh ./radserver_install.sh -silent
 

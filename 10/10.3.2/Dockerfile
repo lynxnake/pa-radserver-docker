@@ -29,6 +29,9 @@ RUN tar xvzf paserver.tar.gz
 #========END ZIP FILES
 
 RUN touch ./radserverlicense.slip
+#Comment out the previous line and un-comment the next two to use a slip file
+#COPY radserverlicense.slip ./radserverlicense.slip
+#RUN chmod 644 ./radserverlicense.slip
 
 RUN sh ./radserver_install.sh -silent
 
