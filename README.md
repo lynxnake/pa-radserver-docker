@@ -5,6 +5,7 @@ Docker script to build RAD Studio Linux deployment image including RAD Server en
 - DocWiki [PAServer Documentation](http://docwiki.embarcadero.com/RADStudio/en/PAServer,_the_Platform_Assistant_Server_Application)
 - DocWiki [RAD Server Docker Deployment](https://docwiki.embarcadero.com/RADStudio/en/RAD_Server_Docker_Deployment)
 - More information on [RAD Studio](https://www.embarcadero.com/products/rad-studio)
+- Other containers: [PAServer](https://github.com/Embarcadero/paserver-docker) and [RAD Server with InterBase](https://github.com/Embarcadero/pa-radserver-ib-docker).
 
 The image defaults to running **PAServer** on port `64211` with the _password_ `securepass`, and **Broadwayd** on port `8082`
 
@@ -75,9 +76,12 @@ Usage: `./build-run.sh [db host] [port] [module file name]`
 ./build-run.sh yourhost.com 3050 samplemodule.so
 ```
 
-_This software is Copyright © [Embarcadero Technologies, Inc.](https://www.embarcadero.com/)_
+--- 
+
+This software is Copyright &copy; 2023 by [Embarcadero Technologies, Inc.](https://www.embarcadero.com/)
 
 _You may only use this software if you are an authorized licensee of an Embarcadero developer tools product. This software is considered a Redistributable as defined in the software license agreement that comes with the Embarcadero Products and is governed by the terms of such [software license agreement](https://www.embarcadero.com/products/rad-studio/rad-studio-eula)._
 
 ![Embarcadero(Black-100px)](https://user-images.githubusercontent.com/821930/211648635-c0db6930-120c-4456-a7ea-dc7612f01451.png#gh-light-mode-only)
 ![Embarcadero(White-100px)](https://user-images.githubusercontent.com/821930/211649057-7f1f1f07-a79f-44d4-8fc1-87c819386ec6.png#gh-dark-mode-only)
+
